@@ -1,0 +1,57 @@
+<section id="task-details">
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <!-- <label class="font-weight-bold">Task title</label> -->
+      <input
+        type="text"
+        class="title form-control w-100"
+        placeholder="Add new task ..."
+        formControlName="title"
+      />
+    </div>
+    <div class="form-group">
+      <label for="description" class="font-weight-bold">Description</label>
+      <textarea
+        id="description"
+        class="form-control w-100"
+        formControlName="description"
+      ></textarea>
+    </div>
+    <div class="row">
+      <div class="col-12 col-xl-6">
+        <div class="form-group">
+          <label for="due-date" class="font-weight-bold">Due Date</label>
+          <input
+            type="date"
+            id="due-date"
+            class="form-control w-100"
+            formControlName="dueDate"
+          />
+        </div>
+      </div>
+      <div class="col-12 col-xl-6">
+        <div class="form-group">
+          <label for="priority" class="font-weight-bold">Priority</label>
+          <select
+            id="priority"
+            class="form-control w-100"
+            formControlName="priority"
+          >
+            <option>Low</option>
+            <option>Normal</option>
+            <option>High</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group mt-5">
+      <button
+        type="submit"
+        class="btn btn-success w-100"
+        [disabled]="!taskForm.valid"
+      >
+        Add
+      </button>
+    </div>
+  </form>
+</section>

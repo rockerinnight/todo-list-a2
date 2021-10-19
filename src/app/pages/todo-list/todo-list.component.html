@@ -1,0 +1,35 @@
+<section id="todo-list">
+  <div class="row h-100 m-0">
+    <div class="col-12 px-5">
+      <div class="text-center font-weight-bold mb-5">To Do List</div>
+      <input
+        type="search"
+        class="search-box form-control w-100 mb-5"
+        placeholder="Search ..."
+      />
+      <app-task-list></app-task-list>
+    </div>
+    <div class="col-12 bg-dark-20 align-self-end">
+      <div
+        class="
+          bulk-action
+          row
+          flex-nowrap
+          justify-content-between
+          align-items-center
+          m-3
+        "
+      >
+        <div class="col">Bulk Action:</div>
+        <div class="actions col d-flex flex-wrap justify-content-around">
+          <div class="py-2">
+            <button class="btn btn-info">Done</button>
+          </div>
+          <div class="py-2">
+            <button class="btn btn-danger">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
