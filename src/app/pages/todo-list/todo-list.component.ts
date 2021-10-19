@@ -26,5 +26,6 @@ export class TodoListComponent implements OnInit {
       this.todoService.removeTask(id);
       this.tasks = this.tasks.filter((t) => t.id !== id);
     });
+    this.checkedTaskIds = [];
   }
 }

@@ -5,36 +5,14 @@ import { ITask } from '../models/task.model';
   providedIn: 'root',
 })
 export class TodoService {
-  tasks: ITask[] = [
-    {
-      id: 1,
-      title: 'todo-1',
-      description: 'desc-1',
-      dueDate: new Date('2019-10-21'),
-      priority: 'Low',
-    },
-    {
-      id: 2,
-      title: 'todo-2',
-      description: 'desc-1',
-      dueDate: new Date('2020-10-21'),
-      priority: 'High',
-    },
-    {
-      id: 3,
-      title: 'todo-3',
-      description: 'desc-1',
-      dueDate: new Date('2021-12-08'),
-      priority: 'Normal',
-    },
-  ];
+  tasks: ITask[] = [];
 
   constructor() {
-    this.saveTasks();
-    // const localTasks = localStorage.getItem('tasks');
-    // if (localTasks) {
-    //   this.tasks = JSON.parse(localTasks);
-    // }
+    // this.saveTasks();
+    const localTasks = localStorage.getItem('tasks');
+    if (localTasks) {
+      this.tasks = JSON.parse(localTasks);
+    }
   }
 
   getTasks(): ITask[] {
