@@ -1,8 +1,12 @@
-.container {
-  height: 50rem;
+.new-task {
+  border-right: 1px solid black;
 }
+
 @media (max-width: 767.98px) {
-	.container {
-		height: fit-content;
-	}
+  .new-task {
+    border-right: none;
+  }
+  .todo-list {
+    border-top: 1px solid black;
+  }
 }

@@ -7,9 +7,12 @@
         class="search-box form-control w-100 mb-5"
         placeholder="Search ..."
       />
-      <app-task-list></app-task-list>
+      <app-task-list
+        [tasks]="tasks"
+        (sendCheckedTaskIds)="getCheckedTaskIds($event)"
+      ></app-task-list>
     </div>
-    <div class="col-12 bg-dark-20 align-self-end">
+    <div class="col-12 bg-dark-20 mt-5" *ngIf="checkedTaskIds.length !== 0">
       <div
         class="
           bulk-action
@@ -26,7 +29,9 @@
             <button class="btn btn-info">Done</button>
           </div>
           <div class="py-2">
-            <button class="btn btn-danger">Remove</button>
+            <button class="btn btn-danger" (click)="removeCheckedTasks()">
+              Remove
+            </button>
           </div>
         </div>
       </div>

@@ -1,5 +1,9 @@
 <section id="task-list">
-    <app-task-card></app-task-card>
-    <app-task-card></app-task-card>
-    <app-task-card></app-task-card>
+  <ng-container *ngFor="let task of tasks">
+    <app-task-card
+      [task]="task"
+      (taskId)="getTaskId($event)"
+      (checked)="getCheckedTask($event)"
+    ></app-task-card>
+  </ng-container>
 </section>
