@@ -1,7 +1,10 @@
 <section id="task-details">
   <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-      <!-- <label class="font-weight-bold">Task title</label> -->
+      <label class="font-weight-bold">
+        Title
+        <span class="text-danger">*</span>
+      </label>
       <input
         type="text"
         class="title form-control w-100"
@@ -37,9 +40,9 @@
             class="form-control w-100"
             formControlName="priority"
           >
-            <option>Low</option>
-            <option>Normal</option>
-            <option>High</option>
+            <option *ngFor="let p of priorities" [value]="p.value">
+              {{ p.name }}
+            </option>
           </select>
         </div>
       </div>
