@@ -8,7 +8,6 @@ export class TodoService {
   tasks: ITask[] = [];
 
   constructor() {
-    // this.saveTasks();
     const localTasks = localStorage.getItem('tasks');
     if (localTasks) {
       this.tasks = JSON.parse(localTasks);
@@ -22,16 +21,20 @@ export class TodoService {
   addOrUpdateTask(task: ITask): void {
     const index = this.tasks.findIndex((t) => t.id === task.id);
     if (index !== -1) {
-      this.tasks.splice(index, 1);
+      this.tasks.splice(index, 1, task);
+    } else {
+      this.tasks.unshift(task);
     }
-    this.tasks.push(task);
     // this.tasks = this.sortTasksByDate(this.tasks);
     this.saveTasks();
   }
 
   removeTask(taskId: number): void {
-    const newTasks = this.tasks.filter((t) => t.id !== taskId);
-    this.tasks = newTasks;
+    const index = this.tasks.findIndex((t) => t.id === taskId);
+    if (index === -1) {
+      return;
+    }
+    this.tasks.splice(index, 1);
     this.saveTasks();
   }
 

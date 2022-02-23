@@ -1,9 +1,8 @@
 <section id="task-list">
-  <ng-container *ngFor="let task of tasks">
+  <ng-container *ngFor="let task of taskList">
     <app-task-card
       [task]="task"
-      (taskId)="getTaskId($event)"
-      (checked)="getCheckedTask($event)"
+      (checkedTaskId)="getCheckedTaskId($event)"
     ></app-task-card>
   </ng-container>
 </section>

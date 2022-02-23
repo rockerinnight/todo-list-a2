@@ -9,28 +9,25 @@ import { TodoService } from 'src/app/services/todo.service';
 })
 export class TaskCardComponent implements OnInit {
   @Input() task!: ITask;
-  @Output() taskId = new EventEmitter();
-  @Output() checked = new EventEmitter();
+  @Output() checkedTaskId = new EventEmitter();
   detailsIsOpen = false;
 
   constructor(private readonly todoService: TodoService) {}
 
   ngOnInit(): void {}
 
-  selectTask(e: any): void {
-    if (e.target.checked) {
-      this.checked.emit({ checked: true, id: +e.target.value });
-    } else {
-      this.checked.emit({ checked: false, id: +e.target.value });
+  selectTask(event: any): void {
+    if (!event.target.checked) {
+      return;
     }
+    this.checkedTaskId.emit(this.task.id);
   }
 
   openDetails(): void {
-    this.detailsIsOpen = true;
+    this.detailsIsOpen = !this.detailsIsOpen;
   }
 
   removeTask(): void {
     this.todoService.removeTask(this.task.id);
-    this.taskId.emit(this.task.id);
   }
 }
